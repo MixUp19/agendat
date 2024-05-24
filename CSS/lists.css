@@ -1,0 +1,97 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif; /* Cambio en el tipo de letra */
+}
+
+.content {
+  padding-top: 20px;
+  text-decoration: none;
+  max-height: 90%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-list {
+  overflow: hidden;
+  max-height: 0;
+  background-color: #f0f0f0; /* Fondo de la lista */
+  transition: max-height 0.3s ease; /* Transición de despliegue */
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.content-list.active {
+  max-height: 1000px; /* Altura máxima para mostrar completamente la lista */
+  text-decoration: none;
+}
+
+.content-title {
+  background-color: #3f34d8; /* Fondo del título */
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición de color de fondo */
+  font-size: 16px; /* Tamaño de letra más grande */
+}
+
+.content-title:hover {
+  background-color: #ddd; /* Cambio de color de fondo al pasar el ratón por encima */
+  cursor: pointer; /* Cambio de cursor al pasar el ratón por encima */
+}
+
+.element-list {
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.element-list:hover {
+  color: white;
+  background-color: #5195e2;
+}
+
+.subcontent-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0; /* Ocultar sublista inicialmente */
+  transition: max-height 0.3s ease; /* Animación de despliegue de sublista */
+}
+
+.subcontent-list.active {
+  max-height: 1000px; /* Altura máxima para mostrar completamente la sublista */
+  text-decoration: none;
+  color: black;
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  .content {
+    padding-top: 10px;
+    max-height: 80%; /* Ajustar la altura máxima en móviles */
+  }
+
+  .content-title {
+    font-size: 14px; /* Reducir tamaño de letra en móviles */
+    padding: 8px; /* Ajustar padding en móviles */
+  }
+
+  .content-list {
+    max-height: 100%; /* Asegurar que las listas se desplieguen correctamente en móviles */
+  }
+
+  .content-list.active {
+    max-height: 1000px; /* Asegurar la altura máxima en móviles */
+  }
+
+  .subcontent-list.active {
+    max-height: 1000px; /* Asegurar la altura máxima en móviles */
+  }
+
+  .element-list {
+    font-size: 14px; /* Reducir tamaño de letra en móviles */
+  }
+}

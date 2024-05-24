@@ -1,0 +1,194 @@
+/* Estilos para el contenedor y los elementos arrastrables */
+.container {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección del contenedor a columna en móviles */
+  width: 100%;
+  height: auto; /* Ajusta la altura a automática */
+  margin-bottom: 2vh;
+}
+
+.principal {
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  flex-direction: column;
+}
+
+.principal input {
+  width: 100%;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 5px;
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+#enviar-lista {
+  width: 25vh;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 10px;
+  text-align: center;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#enviar-lista:hover {
+  border: 100px;
+  border-color: #3498db;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.drag-container, .drop-container {
+  flex-grow: 0; /* No permitir que los contenedores crezcan más allá de su ancho base */
+  flex-shrink: 0;
+}
+
+.drag-container {
+  width: 100%; /* Ajustamos el ancho al 100% en móviles */
+  box-shadow: none; /* Eliminamos la sombra en móviles */
+}
+
+.drop-container {
+  width: 100%; /* Ajustamos el ancho al 100% en móviles */
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.draggable {
+  padding: 10px;
+  height: auto; /* Ajustamos la altura a automática en móviles */
+  overflow-y: auto; /* Agregar desplazamiento vertical si es necesario */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.droppable {
+  padding: 10px;
+  height: auto; /* Ajustamos la altura a automática en móviles */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Agregar desplazamiento vertical si es necesario */
+}
+
+/* Estilos para los elementos arrastrables y los elementos en la lista */
+.item {
+  background-color: #3498db; /* Color de fondo azul */
+  color: white;
+  height: auto; /* Ajustamos la altura a automática en móviles */
+  width: 100%; /* Ajustamos el ancho al 100% en móviles */
+  padding: 8px 12px; /* Ajustar el espaciado interno */
+  margin-bottom: 5px; /* Espaciado entre elementos */
+  border-radius: 10px; /* Borde redondeado */
+  text-align: center; /* Centrar texto */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Sombreado */
+  line-height: 1.4; /* Ajustar la altura de la línea para centrar verticalmente el texto */
+  float: none; /* Elimina el float en móviles */
+}
+
+.item button {
+  background-color: #3498db;
+  color: white;
+  font-size: 20px;
+  float: none; /* Elimina el float en móviles */
+  border: 5px;
+}
+
+.item button:hover {
+  background-color: #3498db;
+  color: black;
+  cursor: pointer;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px; /* Tamaño máximo de la ventana modal */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #3498db;
+  color: white;
+  font-size: 15px;
+  float: none; /* Elimina el float en móviles */
+  border: 5px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Cambia la dirección del contenedor a columna en móviles */
+    height: auto; /* Ajusta la altura a automática */
+  }
+
+  .drag-container, .drop-container {
+    width: 100%; /* Ajusta el ancho al 100% en móviles */
+    box-shadow: none; /* Elimina la sombra en móviles */
+  }
+
+  .item {
+    width: 100%; /* Ajusta el ancho al 100% en móviles */
+    float: none; /* Elimina el float en móviles */
+  }
+
+  .item button {
+    float: none; /* Elimina el float en móviles */
+  }
+
+  .principal input {
+    width: 100%; /* Ajusta el ancho al 100% en móviles */
+  }
+
+  #enviar-lista {
+    width: 100%; /* Ajusta el ancho al 100% en móviles */
+  }
+}

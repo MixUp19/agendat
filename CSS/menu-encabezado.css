@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #333;
+  padding-top: 20px;
+  transition: left 0.3s ease;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h2 {
+  color: white;
+  text-align: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 40px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.back-arrow {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  padding: 10px;
+  transition: box-shadow 0.3s ease; /* Agregamos una transición para la sombra */
+}
+
+.menu li:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agregamos una sombra cuando se pasa el ratón por encima */
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 10px; 
+  background-color: #f5f5f5; 
+  position: fixed;
+  top: 0; 
+  width: 96%; 
+  z-index: 1; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0; 
+}
+
+.logo {
+  display: flex; 
+  align-items: center; 
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+}
+
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.main-content {
+  margin-left: 0;
+  padding: 20px;
+  transition: margin-left 0.3s ease; /* Agregar transición para suavizar el movimiento */
+  margin-top: 120px; /* Añadir espacio en la parte superior para el encabezado */
+}
+
+.main-content.active {
+  margin-left: 250px; /* Ajustar el margen cuando el menú está activo */
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  header{
+    width: 85%;
+  }
+  .sidebar {
+      width: 200px;
+  }
+
+  .menu-toggle {
+      font-size: 30px;
+  }
+
+  .back-arrow {
+      font-size: 16px;
+  }
+
+  .menu li {
+      padding: 8px;
+  }
+
+  .logo img {
+      width: 80px;
+      height: 80px;
+  }
+
+  .profile-picture img {
+      width: 40px;
+      height: 40px;
+  }
+
+  .main-content {
+      margin-top: 80px;
+  }
+}

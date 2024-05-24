@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista Desplegable Doble</title>
+<style>
+body {
+  font-family: Arial, sans-serif; /* Cambio en el tipo de letra */
+}
+
+.content {
+  padding-top: 20px;
+  text-decoration: none;
+}
+
+.content-list {
+  overflow: hidden;
+  max-height: 0;
+  background-color: #f0f0f0; /* Fondo de la lista */
+  transition: max-height 0.3s ease; /* Transición de despliegue */
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.content-list.active {
+  max-height: 1000px; /* Altura máxima para mostrar completamente la lista */
+  text-decoration: none;
+}
+
+.content-title {
+  background-color: #3f34d8; /* Fondo del título */
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición de color de fondo */
+  font-size: 16px; /* Tamaño de letra más grande */
+}
+
+.content-title:hover {
+  background-color: #ddd; /* Cambio de color de fondo al pasar el ratón por encima */
+  cursor: pointer; /* Cambio de cursor al pasar el ratón por encima */
+}
+
+.element-list {
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.element-list:hover {
+  color: white;
+  background-color: #5195e2;
+}
+
+.subcontent-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0; /* Ocultar sublista inicialmente */
+  transition: max-height 0.3s ease; /* Animación de despliegue de sublista */
+}
+
+.subcontent-list.active {
+  max-height: 1000px; /* Altura máxima para mostrar completamente la sublista */
+  text-decoration: none;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+  <h2 class="content-title" data-target="content-1">Formas de Boxeo</h2>
+  <ul class="content-list" id="content-1">
+    <li class="element-list sublist-list">Técnicas de 1-5
+      <ul class="subcontent-list">
+        <li class="element-list" onclick="openModal('Ejemplo 1', 'Descripción del ejemplo 1', 'video1.mp4')">Ejemplo 1</li>
+        <li class="element-list" onclick="openModal('Ejemplo 2', 'Descripción del ejemplo 2', 'video2.mp4')">Ejemplo 2</li>
+        <li class="element-list" onclick="openModal('Ejemplo 3', 'Descripción del ejemplo 3', 'video3.mp4')">Ejemplo 3</li>
+        <li class="element-list" onclick="openModal('Ejemplo 4', 'Descripción del ejemplo 4', 'video4.mp4')">Ejemplo 4</li>
+        <li class="element-list" onclick="openModal('Ejemplo 5', 'Descripción del ejemplo 5', 'video5.mp4')">Ejemplo 5</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const contentTitles = document.querySelectorAll(".content-title");
+
+  contentTitles.forEach(function(title) {
+    title.addEventListener("click", function() {
+      const targetId = title.getAttribute("data-target");
+      const targetList = document.getElementById(targetId);
+
+      // Calculamos la altura de la lista desplegable
+      const children = targetList.children;
+      let totalHeight = 0;
+
+      for (let i = 0; i < children.length; i++) {
+        totalHeight += children[i].scrollHeight*5;
+      }
+      const listHeight = targetList.scrollHeight+totalHeight;
+
+      // Cambiamos la altura máxima de la lista desplegable
+      if (targetList.classList.contains("active")) {
+        targetList.style.maxHeight = "0px"; // Ocultamos la lista si ya está activa
+      } else {
+        targetList.style.maxHeight = listHeight + "px"; // Mostramos la lista si no está activa
+      }
+
+      // Cambiamos el estado de activación de la lista desplegable
+      targetList.classList.toggle("active");
+    });
+  });
+
+  const sublistLists = document.querySelectorAll(".sublist-list");
+
+  sublistLists.forEach(function(sublist) {
+    sublist.addEventListener("click", function(event) {
+      // Detenemos la propagación del evento para evitar que se cierre la lista desplegable padre
+      event.stopPropagation();
+
+      const subcontentList = sublist.querySelector('.subcontent-list');
+      
+      if (subcontentList) {
+        const listHeight = subcontentList.scrollHeight;
+
+        // Cambiamos la altura máxima de la lista desplegable
+        if (subcontentList.classList.contains("active")) {
+          subcontentList.style.maxHeight = "0px"; // Ocultamos la lista si ya está activa
+        } else {
+          subcontentList.style.maxHeight = listHeight + "px"; // Mostramos la lista si no está activa
+        }
+        
+        subcontentList.classList.toggle("active");
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

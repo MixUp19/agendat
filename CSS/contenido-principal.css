@@ -1,0 +1,54 @@
+/* Contenedor de progreso */
+.progress-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Texto de progreso */
+.progress-text {
+  color: black; /* Texto negro */
+  font-weight: bold;
+  padding-left: 10px; /* Espacio a la derecha del texto */
+}
+
+/* Barra de progreso */
+.progress-bar {
+  width: 80%; /* Ancho de la barra de progreso */
+  background-color: #b9b2b2; /* Fondo de la barra */
+  border-radius: 20px; /* Bordes redondeados */
+  overflow: hidden; /* Ocultar el desbordamiento */
+}
+
+/* Progreso */
+.progress {
+  height: 20px;
+  background-color: #3498db;
+  border-radius: 20px;
+}
+
+/* Caja */
+.box {
+  width: calc(50% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  .progress-container {
+      flex-direction: column; /* Cambiar a columna en móviles */
+      align-items: flex-start; /* Alinear al inicio */
+  }
+
+  .progress-bar {
+      width: 100%; /* Ancho completo en móviles */
+  }
+
+  .box {
+      width: 100%; /* Ancho completo en móviles */
+      margin-right: 0; /* Quitar el margen derecho */
+  }
+}

@@ -27,7 +27,7 @@ function subirAzure ($file, $containerName) {
     $string = "$verb\n\n\n$size\n\n$type\n\n\n\n\n\n\nx-ms-blob-type:BlockBlob\nx-ms-date:$date\nx-ms-version:$versionPut\n/$storageAccountName/$containerName/$blobName";
     $hsmac = hash_hmac('sha256', $string, base64_decode($accessToken), true);
     $sign = base64_encode($hsmac);
-    echo $archivo['tmp_file'] . '<br>';
+    $fileContent = file_get_contents($archivo['tmp_name']);
     try {
         // Send PUT request to upload the image
         $response = $client->request('PUT', $endpoint, [
@@ -39,7 +39,7 @@ function subirAzure ($file, $containerName) {
                 'Content-Length' => $size,
                 'Authorization' => 'SharedKey ' . $storageAccountName . ':' . $sign
             ],
-            'body' =>  file_get_contents($archivo) // Open the image file for reading
+            'body' =>  $fileContent // Open the image file for reading
         ]);
         echo "hola2";
         // Check if the request was successful

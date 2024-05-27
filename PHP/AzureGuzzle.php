@@ -54,7 +54,8 @@ function subirAzure ($file, $containerName) {
     } catch (RequestException $e) {
         // Handle request exceptions
         $msg = 'Error uploading image: ' . $e . '<br>';
-        exit();
+    } finally{
+        echo $msg;
     }
     return $endpoint;
 };

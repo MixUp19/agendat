@@ -21,7 +21,7 @@
           <li><a href="formas.php">Formas</a></li>
           <li><a href="Ejercicio.php">Ejercicios</a></li>
           <li><a href="#">Defensas</a></li>
-          <li><a href="#">Ranking</a></li>
+          <li><a href="Ranking.php">Ranking</a></li>
           <?php if($_SESSION['AlmID']===1):?>
           <li><a href="SubirRango.php">Añadir rangos</a></li>
           <li><a href="SubirTipos.php">Añadir tipos</a></li>

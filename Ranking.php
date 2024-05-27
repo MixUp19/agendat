@@ -23,7 +23,7 @@
     <li><a href="entrenamientos.php">Entrenamientos</a></li>
     <li><a href="tecnics.php">Técnicas</a></li>
     <li><a href="formas.php">Formas</a></li>
-    <li><a href="#">Ejercicios</a></li>
+    <li><a href="Ejercicio.php">Ejercicios</a></li>
     <li><a href="#">Defensas</a></li>
     <li><a href="#">Ranking</a></li>
     <?php if($_SESSION['AlmID']===1): ?>

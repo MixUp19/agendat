@@ -177,8 +177,8 @@ button.enabled {
     }
 
     .ejercicio img, .ejercicio video {
-        max-height: 30vh;
-        min-height: 20vh;
+        max-height: 20vh;
+        min-height: 10vh;
     }
 
     #next-button, #finish-button {

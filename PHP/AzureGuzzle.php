@@ -57,11 +57,12 @@ function subirAzure ($file, $containerName) {
         if ($e->hasResponse()) {
             $response = $e->getResponse();
             $msg = 'Error uploading image. Status code: ' . $response->getStatusCode() . '<br>';
-            $msg .= 'Response: ' . $response->getBody()->getContents();
+            $msg .= 'Response: ' . nl2br($response->getBody()->getContents());
         } else {
             $msg = 'Error uploading image: ' . $e->getMessage() . '<br>';
         }
     } finally{
+        
         echo $msg;
     }
     return $endpoint;

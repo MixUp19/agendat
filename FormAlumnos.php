@@ -38,6 +38,7 @@
     <li><a href="FormEjercicio.php">Añadir ejercicios</a></li>
     <li><a href="#">Añadir Alumnos</a></li>
     <?php endif ;?>
+    <li><a href="cerrarsesion.php">Cerrar Sesion</a></li>
   </ul>
 </div>
 

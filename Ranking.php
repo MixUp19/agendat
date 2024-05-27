@@ -1,7 +1,7 @@
 <?php
   require("PHP/ComprobarSesion.php");
   require("PHP/consultas.php");
-  $ejercicios= seleccionarEjercicios($_SESSION['Rango']);
+  $alumnos = listaAlumnos();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,8 +11,7 @@
   <link rel="icon" type="image/png" href="IMGs/Logo.png">
   <title>AgendaT</title>
   <link rel="stylesheet" href="CSS/menu-encabezado.css">
-  <link rel="stylesheet" href="CSS/lists.css">
-  <link rel="stylesheet" href="CSS/modal.css">
+  <link rel="stylesheet" href="CSS/ranking.css">
 </head>
 
 <body>
@@ -27,13 +26,13 @@
     <li><a href="#">Ejercicios</a></li>
     <li><a href="#">Defensas</a></li>
     <li><a href="#">Ranking</a></li>
-    <?php if($_SESSION['AlmID']===1):?>
+    <?php if($_SESSION['AlmID']===1): ?>
     <li><a href="SubirRango.php">Añadir rangos</a></li>
     <li><a href="SubirTipos.php">Añadir tipos</a></li>
     <li><a href="FormEscuela.php">Añadir Escuelas</a></li>
     <li><a href="FormEjercicio.php">Añadir ejercicios</a></li>
     <li><a href="FormAlumno.php">Añadir Alumnos</a></li>
-    <?php endif ;?>
+    <?php endif; ?>
   </ul>
 </div>
 
@@ -45,33 +44,24 @@
       <h1>AgendaT</h1>
     </div>
     <div class="profile-picture">
-      <img src=<?php echo $_SESSION['imagen']?> alt="Foto de perfil">
+      <img src="<?php echo $_SESSION['imagen']; ?>" alt="Foto de perfil">
     </div>
   </header>
-
   <div class="content">
-    <h2 class="content-title" data-target="content-1">Ejercicios</h2>
-    <ul class="content-list" id="content-1">
-      <?php
-      while($row = $ejercicios->fetch_assoc()) {
-        echo "<li class='element-list' onclick='openModal(\"" . $row["Ejnombre"] . "\", \"" . $row["Ejdescripcion"] . "\", \"" . $row["Ejrecurso"] . "\")'>" . $row["Ejnombre"] . "</li>";
-      }
-
-      ?>
-    </ul>
-  </div>
-</div>
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2 id="modalName"></h2>
-    <p id="modalDescription"></p>
-    <img id="modalResource" src="">
+    <h2>Ranking de Alumnos</h2>
+    <div class="ranking">
+      <?php foreach ($alumnos as $alumno): ?>
+        <div class="alumno">
+          <img src="<?php echo $alumno['foto']; ?>" alt="Foto de <?php echo $alumno['nombre_usuario']; ?>">
+          <div class="info">
+            <h3><?php echo $alumno['nombre_usuario']; ?></h3>
+            <p>Tiempo entrenado: <?php echo $alumno['tiempo_entrenado']; ?></p>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
   </div>
 </div>
 </body>
 <script src="JS/menu.js"></script>
-<script src="JS/lists.js"></script>
-<script src="JS/modal.js"></script>
 </html>

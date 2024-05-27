@@ -29,9 +29,9 @@
     <li><a href="#">Defensas</a></li>
     <li><a href="#">Ranking</a></li>
     <?php if($_SESSION['AlmID']===1):?>
-    <li><a href="SubirRango.html">Añadir rangos</a></li>
-    <li><a href="SubirTipos.html">Añadir tipos</a></li>
-    <li><a href="FormEscuela.html">Añadir Escuelas</a></li>
+    <li><a href="SubirRango.php">Añadir rangos</a></li>
+    <li><a href="SubirTipos.php">Añadir tipos</a></li>
+    <li><a href="FormEscuela.php">Añadir Escuelas</a></li>
     <li><a href="FormEjercicio.php">Añadir ejercicios</a></li>
     <li><a href="FormAlumno.php">Añadir Alumnos</a></li>
     <?php endif ;?>

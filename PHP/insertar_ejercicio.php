@@ -12,7 +12,7 @@
   <title>Procesar Formulario</title>
   <style>
     /* Estilos opcionales para mejorar la apariencia */
-    /*body {
+    body {
       font-family: Arial, sans-serif;
       background-color: #f5f5f5;
       margin: 0;
@@ -44,7 +44,7 @@
     <h2>Resultado del Formulario</h2>
     <div class="message">
       <?php
-      /*require('conexion.php');
+      require('conexion.php');
           $nombre = $_POST["nombre"];
           $descripcion = $_POST["descripcion"];
           $rango = $_POST["rango"];
@@ -60,10 +60,10 @@
         else{
             echo "Error: ". $sql. mysqli_error($conn);
         }
-        $conn->close();*/
+        $conn->close();
       ?>
     </div>
     <a href="../FormEjercicio.php">Volver al Formulario</a>
   </div>
 </body>
-</html>*/
+</html>

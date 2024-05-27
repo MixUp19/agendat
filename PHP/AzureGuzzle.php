@@ -12,7 +12,6 @@ function subirAzure ($file, $containerName) {
     $verb = 'PUT';
 
     $accessToken = getenv('KEY_STRING_AGENDAT');
-    echo $accessToken . '<br>';
     $archivo = $file;
 
     $blobName = $archivo['name'];
@@ -21,16 +20,12 @@ function subirAzure ($file, $containerName) {
     $versionPut = '2015-02-21';
     $client = new Client();
     $endpoint = "https://$storageAccountName.blob.core.windows.net/$containerName/$blobName";
-    echo $endpoint;
     $date = gmdate("D, d M Y H:i:s T");
     $size = $archivo['size'];
     $string = "$verb\n\n\n$size\n\n$type\n\n\n\n\n\n\nx-ms-blob-type:BlockBlob\nx-ms-date:$date\nx-ms-version:$versionPut\n/$storageAccountName/$containerName/$blobName";
     $hsmac = hash_hmac('sha256', $string, base64_decode($accessToken), true);
     $sign = base64_encode($hsmac);
     $fileContent = file_get_contents($archivo['tmp_name']);
-    echo $date. "<br>";
-    echo $type. "<br>";
-    echo $size. "<br>";
     try {
         // Send PUT request to upload the image
         $response = $client->request('PUT', $endpoint, [

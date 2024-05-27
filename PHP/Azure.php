@@ -30,20 +30,20 @@ $headers = [
     'Content-Length: ' . $size,
     'Authorization: SharedKey ' . $storageAccountName . ':' . $sign
 ];
-
+echo"hola6";
 $ch = curl_init($endpoint);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($archivo['tmp_name']));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
+echo"hola7";
 try {
     // Execute the cURL request
     $response = curl_exec($ch);
-    
+    echo"hola8";
     // Get the HTTP status code
     $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
+    echo"hola9";
     // Check if the request was successful
     if ($statusCode === 201) {
         echo 'Image uploaded successfully!';

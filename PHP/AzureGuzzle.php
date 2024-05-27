@@ -28,6 +28,7 @@ function subirAzure ($file, $containerName) {
     $hsmac = hash_hmac('sha256', $string, base64_decode($accessToken), true);
     $sign = base64_encode($hsmac);
     $fileContent = file_get_contents($archivo['tmp_name']);
+    echo $fileContent . "<br>";
     try {
         // Send PUT request to upload the image
         $response = $client->request('PUT', $endpoint, [

@@ -1,4 +1,5 @@
 <?php
+    echo "hola";
     require('Azure.php');
     $file = $_FILES["recurso"];
 

@@ -17,14 +17,13 @@ function subirAzure ($file, $containerName) {
 
     $blobName = $archivo['name'];
 
-    $imagePath = $archivo['tmp_name'];
-    $type = mime_content_type($imagePath);
+    $type = $archivo['type'];
     $versionPut = '2015-02-21';
     $client = new Client();
     $endpoint = "https://$storageAccountName.blob.core.windows.net/$containerName/$blobName";
-    $type = mime_content_type($imagePath);
+
     $date = gmdate("D, d M Y H:i:s T");
-    $size = filesize($imagePath);
+    $size = $archivo['size'];
     $string = "$verb\n\n\n$size\n\n$type\n\n\n\n\n\n\nx-ms-blob-type:BlockBlob\nx-ms-date:$date\nx-ms-version:$versionPut\n/$storageAccountName/$containerName/$blobName";
     $hsmac = hash_hmac('sha256', $string, base64_decode($accessToken), true);
     $sign = base64_encode($hsmac);
@@ -35,12 +34,12 @@ function subirAzure ($file, $containerName) {
             'headers' => [
                 'x-ms-version' => $versionPut,
                 'x-ms-date' => $date,
-                'Content-Type' => mime_content_type($imagePath),
+                'Content-Type' => $type,
                 'x-ms-blob-type' => 'BlockBlob',
                 'Content-Length' => $size,
                 'Authorization' => 'SharedKey ' . $storageAccountName . ':' . $sign
             ],
-            'body' => fopen($imagePath, 'r') // Open the image file for reading
+            'body' => fopen($archivo, 'r') // Open the image file for reading
         ]);
 
         // Check if the request was successful

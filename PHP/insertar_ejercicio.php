@@ -2,11 +2,11 @@
     echo "hola";
     require('Azure.php');
     $file = $_FILES["recurso"];
-
+    echo "hola2";
     $ID = pathinfo($file['name'],PATHINFO_FILENAME);
-
+    echo "hola3";
     $path = subirAzure($file);
-
+    echo "hola4";
 ?>
 <!DOCTYPE html>
 <html lang="es">

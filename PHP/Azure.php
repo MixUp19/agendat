@@ -6,7 +6,6 @@ $containerName = 'ayuda';
 $verb = 'PUT';
 
 $accessToken = getenv('KEY_STRING_AGENDAT');
-echo $accessToken .'<br>';
 
 $archivo = $_FILES['blob'];
 $blobName = $archivo['name'];

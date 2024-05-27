@@ -2,6 +2,7 @@
     require('AzureGuzzle.php');
     $file = $_FILES["recurso"];
     $ID = pathinfo($file['name'],PATHINFO_FILENAME);
+    echo $ID;
     $path = subirAzure($file, 'ejercicios');
     echo "hola4";
 ?>

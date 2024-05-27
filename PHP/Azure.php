@@ -1,6 +1,7 @@
 <?php
 
 function subirAzure($file){
+echo"hola";
 $storageAccountName = 'proyectoagendat';
 $containerName = 'ejercicios';
 $verb = 'PUT';

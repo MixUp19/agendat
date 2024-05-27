@@ -60,5 +60,3 @@ try {
 curl_close($ch);
 return $endpoint;
 }
-
-?>

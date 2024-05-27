@@ -12,14 +12,13 @@ $result = $stmt->get_result();
 
 if (!$stmt) {
     $mensaje_error = "Error al preparar la consulta: " . $conn->error;
-    echo $mensaje_error;
     header("Location: ../login.php?error=$mensaje_error");
+    exit();
 } 
 if ($result->num_rows <= 0) {
     $mensaje_error = "Usuario%20no%20encontrado";
-    echo $mensaje_error;
     header("Location: ../login.php?error=$mensaje_error");
-
+    exit();
 } 
 $row = $result->fetch_assoc();
 $almID = $row['AlmID'];

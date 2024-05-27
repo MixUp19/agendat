@@ -54,8 +54,13 @@ function subirAzure ($file, $containerName) {
             $msg= 'Failed to upload image. Status code: ' . $response->getStatusCode();
         }
     } catch (RequestException $e) {
-        // Handle request exceptions
-        $msg = 'Error uploading image: ' . $e . '<br>';
+        if ($e->hasResponse()) {
+            $response = $e->getResponse();
+            $msg = 'Error uploading image. Status code: ' . $response->getStatusCode() . '<br>';
+            $msg .= 'Response: ' . $response->getBody()->getContents();
+        } else {
+            $msg = 'Error uploading image: ' . $e->getMessage() . '<br>';
+        }
     } finally{
         echo $msg;
     }

@@ -12,7 +12,7 @@ function subirAzure ($file, $containerName) {
     $verb = 'PUT';
 
     $accessToken = getenv('KEY_STRING_AGENDAT');
-
+    echo $accessToken . '<br>';
     $archivo = $file;
 
     $blobName = $archivo['name'];

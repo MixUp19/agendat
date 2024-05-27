@@ -3,7 +3,6 @@
     $file = $_FILES["recurso"];
     $ID = pathinfo($file['name'],PATHINFO_FILENAME);
     $path = subirAzure($file,'ejercicios');
-    echo "hola4";
 ?>
 <!DOCTYPE html>
 <html lang="es">

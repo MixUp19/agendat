@@ -66,7 +66,7 @@ ul {
 
 .draggable {
   padding: 10px;
-  height: auto; /* Ajustamos la altura a automática en móviles */
+  max-height: 29vh; /* Ajustamos la altura a automática en móviles */
   overflow-y: auto; /* Agregar desplazamiento vertical si es necesario */
   margin-top: 20px;
   display: flex;
@@ -76,7 +76,7 @@ ul {
 
 .droppable {
   padding: 10px;
-  height: auto; /* Ajustamos la altura a automática en móviles */
+  max-height: 29vh; /* Ajustamos la altura a automática en móviles */
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ ul {
   background-color: #3498db; /* Color de fondo azul */
   color: white;
   height: auto; /* Ajustamos la altura a automática en móviles */
-  width: 100%; /* Ajustamos el ancho al 100% en móviles */
+  width: 95%; /* Ajustamos el ancho al 100% en móviles */
   padding: 8px 12px; /* Ajustar el espaciado interno */
   margin-bottom: 5px; /* Espaciado entre elementos */
   border-radius: 10px; /* Borde redondeado */
@@ -171,7 +171,7 @@ ul {
   }
 
   .drag-container, .drop-container {
-    width: 100%; /* Ajusta el ancho al 100% en móviles */
+    width: 95%; /* Ajusta el ancho al 100% en móviles */
     box-shadow: none; /* Elimina la sombra en móviles */
   }
 

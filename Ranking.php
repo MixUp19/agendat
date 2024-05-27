@@ -55,7 +55,7 @@
           <img src="<?php echo $alumno['AlmFoto']; ?>" alt="Foto de <?php echo $alumno['AlmUsuario']; ?>">
           <div class="info">
             <h3><?php echo $alumno['AlmUsuario']; ?></h3>
-            <p>Tiempo entrenado: <?php echo $alumno['AlmTiempoEntrenado']; ?></p>
+            <p>Tiempo entrenado: <?php echo $alumno['AlmTiempoEntrenado']; ?> minutos</p>
           </div>
         </div>
       <?php endforeach; ?>

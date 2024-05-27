@@ -39,7 +39,7 @@ function subirAzure ($file, $containerName) {
                 'Content-Length' => $size,
                 'Authorization' => 'SharedKey ' . $storageAccountName . ':' . $sign
             ],
-            'body' => fopen($archivo['tmp_name'], 'r') // Open the image file for reading
+            'body' => fopen($archivo, 'r') // Open the image file for reading
         ]);
         echo "hola2";
         // Check if the request was successful

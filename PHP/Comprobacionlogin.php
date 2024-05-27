@@ -41,6 +41,5 @@ if (password_verify($contrasena, $hash_contraseña)) {
     header('Location: ../principal.php');
 } else {
     $mensaje_error = "Contraseña%20incorrecta";
-    echo $mensaje_error;
     header("Location: ../login.php?error=$mensaje_error");
 }

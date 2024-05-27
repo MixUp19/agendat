@@ -2,7 +2,7 @@
 
 function subirAzure($file){
 $storageAccountName = 'proyectoagendat';
-$containerName = 'ayuda';
+$containerName = 'ejercicios';
 $verb = 'PUT';
 
 $accessToken = getenv('KEY_STRING_AGENDAT');

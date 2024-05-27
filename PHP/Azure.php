@@ -12,13 +12,13 @@ echo"hola3";
 $archivo = $_FILES['blob'];
 $blobName = $archivo['name'];
 $imagePath = $archivo['tmp_name'];
-$type = mime_content_type($imagePath);
+$type = $archivo['type'];
 $versionPut = '2015-02-21';
 echo"hola4";
 $endpoint = "https://$storageAccountName.blob.core.windows.net/$containerName/$blobName";
 echo"hola5";
 $date = gmdate("D, d M Y H:i:s T");
-$size = filesize($imagePath);
+$size = $archivo['size'];
 
 $string="$verb\n\n\n$size\n\n$type\n\n\n\n\n\n\nx-ms-blob-type:BlockBlob\nx-ms-date:$date\nx-ms-version:$versionPut\n/$storageAccountName/$containerName/$blobName";
 $sign = base64_encode(hash_hmac('sha256', $string, base64_decode($accessToken)));
@@ -33,7 +33,7 @@ $headers = [
 
 $ch = curl_init($endpoint);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-curl_setopt($ch, CURLOPT_POSTFIELDS, fopen($imagePath, 'r'));
+curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($archivo['tmp_name']));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 

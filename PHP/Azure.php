@@ -14,6 +14,7 @@ $type = mime_content_type($imagePath);
 $versionPut = '2015-02-21';
 
 $endpoint = "https://$storageAccountName.blob.core.windows.net/$containerName/$blobName";
+echo $endpoint;
 $date = gmdate("D, d M Y H:i:s T");
 $size = filesize($imagePath);
 

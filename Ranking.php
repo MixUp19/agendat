@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="IMGs/Logo.png">
   <title>AgendaT</title>
   <link rel="stylesheet" href="CSS/menu-encabezado.css">
-  <link rel="stylesheet" href="CSS/ranking.css">
+  <link rel="stylesheet" href="CSS/ranking.css">    
 </head>
 
 <body>
@@ -52,10 +52,10 @@
     <div class="ranking">
       <?php foreach ($alumnos as $alumno): ?>
         <div class="alumno">
-          <img src="<?php echo $alumno['foto']; ?>" alt="Foto de <?php echo $alumno['nombre_usuario']; ?>">
+          <img src="<?php echo $alumno['AlmFoto']; ?>" alt="Foto de <?php echo $alumno['AlmUsuario']; ?>">
           <div class="info">
-            <h3><?php echo $alumno['nombre_usuario']; ?></h3>
-            <p>Tiempo entrenado: <?php echo $alumno['tiempo_entrenado']; ?></p>
+            <h3><?php echo $alumno['AlmUsuario']; ?></h3>
+            <p>Tiempo entrenado: <?php echo $alumno['AlmTiempoEntrenado']; ?></p>
           </div>
         </div>
       <?php endforeach; ?>

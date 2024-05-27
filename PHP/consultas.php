@@ -161,7 +161,6 @@ function listaAlumnos(){
     require("conexion.php");
     $sql = "SELECT AlmUsuario, AlmFoto, AlmTiempoEntrenado FROM alumno ORDER BY AlmTiempoEntrenado desc";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $AlmID);
     $stmt->execute(); 
     $result = $stmt->get_result(); // Obtener resultados antes de cerrar la conexión
     $conn->close();

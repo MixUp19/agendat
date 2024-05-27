@@ -4,63 +4,6 @@ body {
     padding: 0;
 }
 
-.sidebar {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.sidebar h2 {
-    margin-top: 0;
-}
-
-.sidebar .menu {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar .menu li {
-    margin: 10px 0;
-}
-
-.sidebar .menu li a {
-    color: white;
-    text-decoration: none;
-}
-
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-}
-
-header .logo img {
-    height: 50px;
-    margin-right: 10px;
-}
-
-header .profile-picture img {
-    height: 50px;
-    border-radius: 50%;
-}
 
 .ranking {
     display: flex;
@@ -90,20 +33,7 @@ header .profile-picture img {
 }
 
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
 
-    .main-content {
-        margin-left: 0;
-    }
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
     .ranking {
         flex-direction: column;

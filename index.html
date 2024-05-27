@@ -6,14 +6,22 @@
 <title>AgendaT</title>
 <link rel="stylesheet" href="CSS/Index.css">
 <link rel="icon" type="image/png" href="IMGs/Logo.png">
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs6nEGj5_GTaz216_WxDDQhRhOsHb9pTk&callback=console.debug&libraries=maps,marker&v=beta">
+</script>
 </head>
 <body>
 <div class="container">
-    <img id="logo" src="IMGs/Logo.png" alt="Your Logo" width="150">
-    <h1>Agendate</h1>
-    <a href="login.php" id="login-btn">Iniciar sesión</a>
+    <div class="content">
+        <img id="logo" src="IMGs/Logo.png" alt="Your Logo" width="150">
+        <h1>Agendate</h1>
+        <a href="login.php" id="login-btn">Iniciar sesión</a>
+    </div>
+    <div id="map" class="map">
+        <gmp-map center="24.739959716796875,-107.3858413696289" zoom="14" map-id="DEMO_MAP_ID">
+            <gmp-advanced-marker position="24.739959716796875,-107.3858413696289" title="My location"></gmp-advanced-marker>
+          </gmp-map>
+    </div>
 </div>
 <script src="JS/index.js"></script>
 </body>
-</html>
 </html>

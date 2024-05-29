@@ -47,6 +47,10 @@
     </div>
     <div class="profile-picture">
       <img src=<?php echo $_SESSION['imagen']?> alt="Foto de perfil">
+      <div class="profile-dropdown">
+          <p>Usuario: <?php echo $_SESSION['AlmUsuario']; ?></p>
+          <p>Rango: <?php echo seleccionarNombreRango($_SESSION['Rango']); ?></p>
+      </div>
     </div>
   </header>
 

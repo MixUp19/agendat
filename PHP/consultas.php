@@ -166,3 +166,15 @@ function listaAlumnos(){
     $conn->close();
     return $result;
 }
+function seleccionarNombreRango($rango){
+    require("conexion.php");
+    $sql = "SELECT ColorCinta FROM rango WHERE rango = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $rango);
+    $stmt->execute(); 
+    $result = $stmt->get_result(); // Obtener resultados antes de cerrar la conexión
+    $result = $result->fetch_array();
+    $result = $result['ColorCinta'];
+    $conn->close();
+    return $result;
+}

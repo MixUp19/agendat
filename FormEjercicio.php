@@ -89,6 +89,12 @@
     <input type="submit" value="Enviar">
   </form>
   </div>
+  <footer>
+  <div class="footer-content">
+    <p>Hazlo cada día mejor</p>
+    <p>Contacto: info@agendat.com | Teléfono: +34 123 456 789</p>
+  </div>
+</footer>
 </div>
 <script src="JS/menu.js"></script>
 </body>

@@ -72,6 +72,12 @@
       <?php endforeach; ?>
     </div>
   </div>
+  <footer>
+  <div class="footer-content">
+    <p>Hazlo cada día mejor</p>
+    <p>Contacto: info@agendat.com | Teléfono: +34 123 456 789</p>
+  </div>
+</footer>
 </div>
 </body>
 <script src="JS/menu.js"></script>

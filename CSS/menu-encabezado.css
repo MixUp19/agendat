@@ -146,6 +146,20 @@ h1 {
 .main-content.active {
   margin-left: 250px; /* Ajustar el margen cuando el menú está activo */
 }
+footer {
+  background-color: #4b4949;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  position: fixed;
+  width: 97%;
+  bottom: 0;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
 
 /* Media Query para dispositivos móviles */
 @media (max-width: 768px) {
@@ -181,5 +195,12 @@ h1 {
 
   .main-content {
     margin-top: 80px;
+  }
+  footer {
+    padding: 10px 0;
+  }
+
+  .footer-content p {
+    font-size: 14px;
   }
 }

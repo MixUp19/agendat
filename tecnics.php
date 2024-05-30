@@ -133,6 +133,12 @@
       }
       echo "</ul></div>"
   ?>
+  <footer>
+  <div class="footer-content">
+    <p>Hazlo cada día mejor</p>
+    <p>Contacto: info@agendat.com | Teléfono: +34 123 456 789</p>
+  </div>
+</footer>
 </div>
 
 <div id="myModal" class="modal">

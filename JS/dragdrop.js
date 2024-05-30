@@ -38,7 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const draggableList = document.getElementById('draggable-list');
     const droppableList = document.getElementById('droppable-list');
     const texto = document.getElementById('titulo-entrenamiento');
-
+    texto.addEventListener('drop', function(event){
+        event.preventDefault();
+        mostrarModal("Nonono","No debe soltar los elementos ahí", 2);
+    })
     function updateDroppableState() {
         if (droppableList.children.length === 0) {
             droppableList.classList.add('empty');

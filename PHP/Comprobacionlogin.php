@@ -37,9 +37,6 @@ if (password_verify($contrasena, $hash_contraseña)) {
     $_SESSION['Rango'] = $rango;
     $_SESSION['imagen'] = $imagen;
     $_SESSION['AlmTiempoEntrenado'] = $tiempo;
-    if($tiempo>=2):
-        $_SESSION['Medalla'] = 'IMGs/Medals/gold.jpg';
-    endif;
     header('Location: ../principal.php');
 } else {
     $mensaje_error = "Contraseña%20incorrecta";

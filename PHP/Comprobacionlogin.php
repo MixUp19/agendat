@@ -1,7 +1,7 @@
 <?php
 require("conexion.php");
 
-$sql = "select AlmID, AlmUsuario, AlmContrasena, Rango, Almfoto from alumno where almcorreo= ? ";
+$sql = "select AlmID, AlmUsuario, AlmContrasena, Rango, Almfoto, AlmTiempoEntrenado from alumno where almcorreo= ? ";
 
 $usuario = $_POST['txtCorreo'];
 $contrasena = $_POST['txtPassword'];
@@ -37,7 +37,9 @@ if (password_verify($contrasena, $hash_contraseña)) {
     $_SESSION['Rango'] = $rango;
     $_SESSION['imagen'] = $imagen;
     $_SESSION['AlmTiempoEntrenado'] = $tiempo;
-
+    if($tiempo>=2):
+        $_SESSION['Medalla'] = 'IMGs/Medals/gold.jpg';
+    endif;
     header('Location: ../principal.php');
 } else {
     $mensaje_error = "Contraseña%20incorrecta";

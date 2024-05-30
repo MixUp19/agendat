@@ -101,11 +101,11 @@ function seleccionarTodo($rango){
     $conn->close();
     return $result;
 }
-function seleccionarEntrenamientoPasos($entrenamiento){
+function seleccionarEntrenamientoPasos($entrenamiento, $usuario){
     require("conexion.php");
-    $sql = "select  ed.entpaso, ej.EjNombre, ej.EjRecurso, ej.ejtiempo, ej.EjDescripcion, ejTiempo from entrenamiento as e inner join entrenamientodetalle as ed ON e.entid = ed.entid inner join ejercicio as ej on ed.ejid=ej.ejid where e.entid=?";
+    $sql = "select  e.entnombre, ed.entpaso, ej.EjNombre, ej.EjRecurso, ej.ejtiempo, ej.EjDescripcion, ejTiempo from entrenamiento as e inner join entrenamientodetalle as ed ON e.entid = ed.entid inner join ejercicio as ej on ed.ejid=ej.ejid where e.entid=? and e.AlmID=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $entrenamiento);
+    $stmt->bind_param("ii", $entrenamiento, $usuario);
     $stmt->execute(); 
     $result = $stmt->get_result(); // Obtener resultados antes de cerrar la conexión
     $conn->close();

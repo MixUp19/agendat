@@ -136,6 +136,13 @@ h1 {
   margin-top: 120px; /* Añadir espacio en la parte superior para el encabezado */
 }
 
+.profile-dropdown img {
+  width: auto;
+  height: 5vh;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
 .main-content.active {
   margin-left: 250px; /* Ajustar el margen cuando el menú está activo */
 }

@@ -18,3 +18,12 @@ $sql = "update alumno set almtiempoentrenado = ? + almtiempoentrenado where almi
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $totalTime, $_SESSION['AlmID']);
 $result = $stmt->execute();
+
+$sql = "select Almtiempoentrenado from alumno where almid=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $_SESSION['AlmID']);
+$stmt->execute();
+$result=$stmt->get_result();
+$result = $result->fetch_all();
+session_start();
+$_SESSION['Almtiempoentrenado'] = $result['Almtiempoentrenado'];

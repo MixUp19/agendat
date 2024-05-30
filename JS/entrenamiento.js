@@ -5,6 +5,7 @@ const finishButton = document.getElementById('finish-button');
 const ejerciciosList = document.querySelector('.ejercicios-list');
 const totalTimer = document.getElementById('total-timer');
 let totalSeconds = 0;
+let pause=false;
 let interval;
 
 
@@ -33,7 +34,9 @@ function parseTimeString(timeString) {
 }
 
 function updateTotalTimer() {
-    totalSeconds++;
+    if(!pause){
+        totalSeconds++;
+    }
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
@@ -45,7 +48,11 @@ function startExerciseTimer(duration) {
     const display = document.getElementById('exercise-timer');
     display.textContent = formatTime(timer);
     interval = setInterval(function () {
-        if (--timer < 0) {
+        if(!pause){
+            timer--;
+        }
+
+        if (timer < 0) {
             currentIndex++;
             clearInterval(interval);
             nextButton.disabled = false;
@@ -105,7 +112,45 @@ function showModal() {
 }
 
 document.getElementById('close-modal').addEventListener('click', function () {
-    window.history.back();
+    window.location.href= "principal.php";
+});
+
+document.getElementById('back-button').addEventListener('click', function () {
+    const confirmModal = document.getElementById('confirm-modal');
+    const msg = document.getElementById('confirm-modal-msg');
+    msg.textContent = totalTimer.textContent;
+    confirmModal.style.display = 'block';
+    pause=true;
+});
+
+
+document.getElementById('cancel-exit').addEventListener('click', function () {
+    const confirmModal = document.getElementById('confirm-modal');
+    confirmModal.style.display = 'none';
+    pause=false;
+});
+
+document.getElementById('confirm-exit').addEventListener('click', function () {
+    if (totalSeconds < 60) {
+        window.location.href= "principal.php";
+    } else {
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const urlParams = new URLSearchParams(window.location.search);
+        const entrenamientoId = urlParams.get('id');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'PHP/terminarEntrenamiento.php');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+                window.location.href= "principal.php";
+            } else {
+                console.error('Error al actualizar el entrenamiento');
+            }
+        };
+        xhr.send(JSON.stringify({ totalTime: totalMinutes, entrenamientoId: entrenamientoId }));
+    }
 });
 
 window.onload = function () {

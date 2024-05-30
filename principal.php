@@ -1,7 +1,7 @@
 <?php
   require("PHP/ComprobarSesion.php");
   require("PHP/consultas.php");
-  $tiempo= seleccionarTiempo($_SESSION['AlmID']);
+  $_SESSION['AlmTiempoEntrenado']= seleccionarTiempo($_SESSION['AlmID']);
   $entrenamientos=seleccionarEntrenamientosViejos($_SESSION['AlmID'])
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,6 @@
     <li><a href="tecnics.php">Técnicas</a></li>
     <li><a href="formas.php">Formas</a></li>
     <li><a href="Ejercicio.php">Ejercicios</a></li>
-    <li><a href="#">Defensas</a></li>
     <li><a href="Ranking.php">Ranking</a></li>
     <?php if($_SESSION['AlmID']===1):?>
     <li><a href="SubirRango.html">Añadir rangos</a></li>
@@ -50,16 +49,20 @@
       <img src=" <?php echo $_SESSION['imagen'] ?> " alt="Foto de perfil">
       <div class="profile-dropdown">
           <p>Usuario: <?php echo $_SESSION['AlmUsuario']; ?></p>
-          <p>Rango: <?php echo seleccionarNombreRango($_SESSION['Rango']); ?></p>
+          <p>Rango: <?php echo seleccionarNombreRango($_SESSION['Rango']);?></p>
+          <?php if($_SESSION['AlmTiempoEntrenado']>=200):?>
+            <img id="medal" src="IMGs/Medals/gold.jpg" alt="Dropdown Image">
+          <p>Medalla del mes obtenida</p>
+          <?php endif;?>
       </div>
     </div>
   </header>
 
   <div class="progress-container">
     <div class="progress-bar">
-      <div class="progress" style="width:<?php echo ($tiempo/200)*100 ?>%"></div>
+      <div class="progress" style="width:<?php echo ($_SESSION['AlmTiempoEntrenado']/200)*100 ?>%"></div>
     </div>
-    <p class="progress-text"><?php echo $tiempo?> minutos entrenados</p>
+    <p class="progress-text"><?php echo $_SESSION['AlmTiempoEntrenado']?> minutos entrenados</p>
   </div>
 
   <div class="content">

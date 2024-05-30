@@ -49,6 +49,24 @@
   flex-shrink: 0;
 }
 
+.droppable {
+  border: 2px dotted #3498db; /* Borde punteado */
+  position: relative;
+  min-height: 100px; /* Altura mínima para mostrar el mensaje */
+}
+
+.droppable.empty::before {
+  content: "Arrastre elementos aquí"; /* Mensaje para la lista vacía */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3498db;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
 .drag-container {
   width: 100%; /* Ajustamos el ancho al 100% en móviles */
   box-shadow: none; /* Eliminamos la sombra en móviles */

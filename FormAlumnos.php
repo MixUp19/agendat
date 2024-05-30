@@ -29,7 +29,6 @@
     <li><a href="tecnics.php">Técnicas</a></li>
     <li><a href="formas.php">Formas</a></li>
     <li><a href="Ejercicio.php">Ejercicios</a></li>
-    <li><a href="#">Defensas</a></li>
     <li><a href="Ranking.php">Ranking</a></li>
     <?php if($_SESSION['AlmID']===1):?>
     <li><a href="SubirRango.php">Añadir rangos</a></li>
@@ -54,6 +53,10 @@
       <div class="profile-dropdown">
           <p>Usuario: <?php echo $_SESSION['AlmUsuario']; ?></p>
           <p>Rango: <?php echo seleccionarNombreRango($_SESSION['Rango']); ?></p>
+          <?php if($_SESSION['AlmTiempoEntrenado']>=200):?>
+            <img id="medal" src="IMGs/Medals/gold.jpg" alt="Dropdown Image">
+          <p>Medalla del mes obtenida</p>
+          <?php endif;?>
       </div>
     </div>
   </header>

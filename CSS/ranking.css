@@ -31,6 +31,10 @@ body {
     display: flex;
     flex-direction: column;
 }
+#medal{
+    height: 5vh;
+    width: 5vh;
+}
 
 @media (max-width: 768px) {
 

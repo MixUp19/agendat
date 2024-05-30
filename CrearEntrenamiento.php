@@ -25,14 +25,22 @@
     </div>
     <div class="profile-picture">
       <img src=<?php echo $_SESSION['imagen']?> alt="Foto de perfil">
+      <div class="profile-dropdown">
+          <p>Usuario: <?php echo $_SESSION['AlmUsuario']; ?></p>
+          <p>Rango: <?php echo seleccionarNombreRango($_SESSION['Rango']); ?></p>
+          <?php if($_SESSION['AlmTiempoEntrenado']>=200):?>
+            <img id="medal" src="IMGs/Medals/gold.jpg" alt="Dropdown Image">
+          <p>Medalla del mes obtenida</p>
+          <?php endif;?>
+      </div>
     </div>
   </header>
   <div class="principal">
-  <input type="text" id="titulo-entrenamiento" placeholder="Nombre entrenamiento" required>
+  <input type="text" id="titulo-entrenamiento" placeholder="Escribe aquí el nombre de tu entrenamiento" required>
   <div class="container">
   <div class="drop-container">
     <h2>Lista</h2>
-    <ul id="droppable-list" class="droppable"></ul>
+    <ul id="droppable-list" class="droppable empty"></ul>
   </div>
   <div class="drag-container">
     <h2>Elementos Arrastrables</h2>

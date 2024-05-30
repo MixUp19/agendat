@@ -37,15 +37,19 @@ window.onclick = function(event) {
 document.addEventListener('DOMContentLoaded', function () {
     const draggableList = document.getElementById('draggable-list');
     const droppableList = document.getElementById('droppable-list');
+    const texto = document.getElementById('titulo-entrenamiento');
 
+    function updateDroppableState() {
+        if (droppableList.children.length === 0) {
+            droppableList.classList.add('empty');
+        } else {
+            droppableList.classList.remove('empty');
+        }
+    }
 
     draggableList.addEventListener('dragstart', function (event) {
-        const data = JSON.stringify({texto:event.target.innerText, id: event.target.getAttribute('data-id')});
+        const data = JSON.stringify({texto: event.target.innerText, id: event.target.getAttribute('data-id')});
         event.dataTransfer.setData('text/plain', data);
-    });
-
-    droppableList.addEventListener('dragover', function (event) {
-        event.preventDefault();
     });
 
     droppableList.addEventListener('dragover', function (event) {
@@ -55,19 +59,19 @@ document.addEventListener('DOMContentLoaded', function () {
     droppableList.addEventListener('drop', function (event) {
         event.preventDefault();
         const data = JSON.parse(event.dataTransfer.getData('text/plain'));
-        const id = event.dataTransfer.getData('text/plain');
-        if(data ==="")
-            return;
-        const listItem = createListItem(data.texto);
-        listItem.classList.add('item'); 
-        listItem.setAttribute('data-id', data.id);
+        if (!data || !data.texto) return;
+        
+        const listItem = createListItem(data.texto, data.id);
         droppableList.appendChild(listItem);
+        updateDroppableState();
     });
 
-    function createListItem(text) {
+    function createListItem(text, id) {
         const listItem = document.createElement('li');
         listItem.textContent = text;
         listItem.draggable = true;
+        listItem.classList.add('item'); 
+        listItem.setAttribute('data-id', id);
 
         const deleteButton = document.createElement('button');
         deleteButton.innerHTML = '&#10006;'; // Unicode del icono de basura
@@ -75,13 +79,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         deleteButton.addEventListener('click', function () {
             listItem.remove();
+            updateDroppableState();
         });
 
         listItem.appendChild(deleteButton);
         return listItem;
     }
 
-    // Permitimos que los elementos se puedan arrastrar y reordenar
+    updateDroppableState();
+
     let draggedItem = null;
 
     droppableList.addEventListener('dragstart', function (event) {
@@ -102,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 droppableList.appendChild(draggedItem);
             }
             draggedItem = null;
+            updateDroppableState();
         }
     });
 });
